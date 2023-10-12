@@ -17,6 +17,8 @@ const initGame = () => {
     wordText.innerText = wordArray.join(""); //passing shuffled word as word text
     hintText.innerText = randomObj.hint; //passing random object hint as hint text
     correctWord = randomObj.word.toLowerCase(); // passing random word to correctWord
+    inputField.value = "";
+    inputField.setAttribute("maxlength", correctWord.length); //setting input maxlength attribute value to word length
     console.log(randomObj);
 }
 initGame();
@@ -29,7 +31,8 @@ const checkWord = () => {
     if(userWord !== correctWord) return alert(`Oops! ${userWord} is not currect word`);
 
     //If above conditions are failed then show below sentence, i.e. if user word match with the currect word
-    alert(`Congrats! ${userWord.toUpperCase()} is a currect word`)
+    alert(`Congrats! ${userWord.toUpperCase()} is a currect word`);
+    initGame();
 }
 
 refreshBtn.addEventListener("click", initGame);
