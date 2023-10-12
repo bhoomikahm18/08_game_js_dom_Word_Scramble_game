@@ -5,22 +5,9 @@ inputField = document.querySelector("input"),
 refreshBtn = document.querySelector(".refresh-word"),
 checkBtn = document.querySelector(".check-word");
 
-let correctWord, timer;
-
-const initTimer = maxTime => {
-    clearInterval(timer);
-    timer = setInterval(() => {
-        if(maxTime > 0) {
-            maxTime--; //decrement maxTime by 1
-            return timeText.innerText = maxTime;
-        }
-        alert(`Time off! ${correctWord.toUpperCase()} was the correct word`);
-        initGame(); //Calling initGame function, so the game restart
-    }, 1000);
-}
+let correctWord;
 
 const initGame = () => {
-    initTimer(30); //Calling initTimer function with passing 30 as maxTime value
     let randomObj = words[Math.floor(Math.random() * words.length)]; //Getting random object from words
     let wordArray = randomObj.word.split(""); //Splitting each letter of random word
     for (let i = wordArray.length - 1; i > 0; i--) {
